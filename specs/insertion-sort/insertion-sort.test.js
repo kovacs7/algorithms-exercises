@@ -14,13 +14,24 @@
 */
 
 function insertionSort(nums) {
-  // code goes here
+  for (let i = 0; i < nums.length; i++) {
+    let count = 0
+    for(let j = i -1 ; j >= 0; j--) {
+      if (nums[j] > nums[i - count]){
+        let temp = nums[i - count]
+        nums[i-count] = nums[j]
+        nums[j] = temp
+      }
+      ++count;
+    }
+  }
+  return (nums)
 }
 
 // unit tests
 // do not modify the below code
-test.skip("insertion sort", function () {
-  const nums = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1];
+test("insertion sort", function () {
+  const nums = [21, -50, -31, -3, 56, 65, 7, 46, -62, -82];
   insertionSort(nums);
-  expect(nums).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  expect(nums).toEqual([-82, -62, -50, -31, -3, 7, 21, 46, 56, 65]);
 });
